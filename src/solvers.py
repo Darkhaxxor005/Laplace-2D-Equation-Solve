@@ -20,6 +20,7 @@ def apply_boundary_conditions(u):
     # Solve 2D Laplace equation using the Jacobi iterative method.
 
     u_new = u.copy()
+    errors = []
 
     for _ in range(max_iter):
         for i in range(1, u.shape[0] - 1):
@@ -28,3 +29,12 @@ def apply_boundary_conditions(u):
                     u[i + 1, j] + u[i - 1, j] +      # Finite Difference Discretization Equation
                     u[i, j + 1] + u[i, j - 1]
                 )
+        error = np.linalg.norm(u_new - u)   # The error is defined as the L2 norm of the difference between successive solution iterates.
+        errors.append(error)
+
+        if error < tol:
+            break  # Breaks the loop when the error is smaller than the error threshold.
+
+        u = apply_boundary_conditions(u_new.copy())
+
+    return u, errors   # Returns u and errors to the main function.
