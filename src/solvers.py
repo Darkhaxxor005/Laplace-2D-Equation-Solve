@@ -1,0 +1,30 @@
+import numpy as np
+
+def apply_boundary_conditions(u):
+    """
+    Apply Dirichlet boundary conditions to the grid.
+
+    Top boundary    : 100
+    Bottom boundary : 0
+    Left boundary   : 0
+    Right boundary  : 0
+    """
+    u[0, :] = 100  # Defines boundary values.
+    u[-1, :] = 0
+    u[:, 0] = 0
+    u[:, -1] = 0
+    return u
+    
+ def jacobi(u, max_iter, tol):
+    
+    # Solve 2D Laplace equation using the Jacobi iterative method.
+
+    u_new = u.copy()
+
+    for _ in range(max_iter):
+        for i in range(1, u.shape[0] - 1):
+            for j in range(1, u.shape[1] - 1):
+                u_new[i, j] = 0.25 * (
+                    u[i + 1, j] + u[i - 1, j] +      # Finite Difference Discretization Equation
+                    u[i, j + 1] + u[i, j - 1]
+                )
