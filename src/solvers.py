@@ -54,4 +54,12 @@ def gauss_seidel(u, max_iter, tol):
                     u[i + 1, j] + u[i - 1, j] +     # Finite Difference Discretization Equation
                     u[i, j + 1] + u[i, j - 1]
                 )
-                
+        error = np.linalg.norm(u - u_old)    # The error is defined as the L2 norm of the difference between successive solution iterates.
+        errors.append(error)
+
+        if error < tol:
+            break    # Breaks the loop when the error is smaller than the error threshold.
+
+        u = apply_boundary_conditions(u)
+
+    return u, errors  # Returns u and errors to the main function.                
