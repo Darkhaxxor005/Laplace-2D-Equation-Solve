@@ -21,3 +21,13 @@ u0 = apply_boundary_conditions(u0)
 u_jacobi, err_j = jacobi(u0.copy(), max_iter, tol)
 u_gs, err_gs = gauss_seidel(u0.copy(), max_iter, tol)
 u_sor, err_sor = sor(u0.copy(), omega, max_iter, tol)
+
+
+# Iteration Counts 
+
+def check_convergence(method_name, errors):
+    if len(errors) >= max_iter:
+        print("\n")
+        print(f"\n[WARNING] {method_name} failed to reach the required result in {max_iter} iterations")
+    else:
+        print(f"\n[INFO] {method_name} converged in {len(errors)} iterations")
