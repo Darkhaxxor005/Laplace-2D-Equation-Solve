@@ -15,3 +15,9 @@ omega = float(input("\n[-]Enter SOR relaxation factor omega (e.g. 1.7): "))
 u0 = np.zeros((N, N))
 u0 = apply_boundary_conditions(u0)
 
+
+# Solve using Jacobi, Gauss–Seidel, and SOR.
+
+u_jacobi, err_j = jacobi(u0.copy(), max_iter, tol)
+u_gs, err_gs = gauss_seidel(u0.copy(), max_iter, tol)
+u_sor, err_sor = sor(u0.copy(), omega, max_iter, tol)
