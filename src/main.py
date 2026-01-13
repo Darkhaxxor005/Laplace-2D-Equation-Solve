@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt    # Libraries for math calculation and graph plotting.
-from solvers import jacobi,apply_boundary_conditions  # Math Functions
+from solvers import jacobi,gauss_seidel, sor, apply_boundary_conditions  # Math Functions
 
 # User Input Section
 
@@ -30,7 +30,7 @@ def check_convergence(method_name, errors):
         print("\n")
         print(f"\n[WARNING] {method_name} failed to reach the required result in {max_iter} iterations")
     else:
-        print(f"\n[INFO] {method_name} converged in {len(errors)} iterations
+        print(f"\n[INFO] {method_name} converged in {len(errors)} iterations")
         
 check_convergence("Jacobi", err_j)
 check_convergence("Gauss-Seidel", err_gs)
