@@ -15,7 +15,7 @@ def apply_boundary_conditions(u):
     u[:, -1] = 0
     return u
     
- def jacobi(u, max_iter, tol):
+def jacobi(u, max_iter, tol):
     
     # Solve 2D Laplace equation using the Jacobi iterative method.
 
