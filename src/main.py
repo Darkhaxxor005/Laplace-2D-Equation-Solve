@@ -35,3 +35,4 @@ def check_convergence(method_name, errors):
 check_convergence("Jacobi", err_j)
 check_convergence("Gauss-Seidel", err_gs)
 check_convergence("SOR", err_sor)
+print("\n")
