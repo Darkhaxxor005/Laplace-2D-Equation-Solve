@@ -36,3 +36,17 @@ check_convergence("Jacobi", err_j)
 check_convergence("Gauss-Seidel", err_gs)
 check_convergence("SOR", err_sor)
 print("\n")
+
+
+# Plotting Results
+
+plt.figure()
+plt.plot(err_j, label="Jacobi")
+plt.plot(err_gs, label="Gauss-Seidel")
+plt.plot(err_sor, label="SOR")
+plt.yscale("log")
+plt.xlabel("Iteration")
+plt.ylabel("Error")
+plt.legend()
+plt.title("Convergence Comparison")
+plt.savefig("results/plots/error_comparison.png")
