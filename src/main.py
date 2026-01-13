@@ -30,4 +30,8 @@ def check_convergence(method_name, errors):
         print("\n")
         print(f"\n[WARNING] {method_name} failed to reach the required result in {max_iter} iterations")
     else:
-        print(f"\n[INFO] {method_name} converged in {len(errors)} iterations")
+        print(f"\n[INFO] {method_name} converged in {len(errors)} iterations
+        
+check_convergence("Jacobi", err_j)
+check_convergence("Gauss-Seidel", err_gs)
+check_convergence("SOR", err_sor)
